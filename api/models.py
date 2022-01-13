@@ -18,7 +18,6 @@ class Post(models.Model):
 
 class Group(models.Model):
     title = models.CharField(max_length=255, verbose_name='Title')
-    slug = models.SlugField(verbose_name='Slug', unique=True)
     description = models.TextField(blank=True, null=True, verbose_name='Description')
 
     def __str__(self):
@@ -34,7 +33,7 @@ class Comment(models.Model):
 
 class Follow(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='follower', verbose_name='User')
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='following', verbose_name='Author')
+    following = models.ForeignKey(User, on_delete=models.CASCADE, related_name='following', verbose_name='Following')
 
     class Meta:
-        unique_together = ['user', 'author']
+        unique_together = ['user', 'following']

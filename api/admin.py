@@ -8,9 +8,8 @@ class PostAdmin(admin.ModelAdmin):
 
 
 class GroupAdmin(admin.ModelAdmin):
-    list_display = ('pk', 'title', 'description', 'slug')
+    list_display = ('pk', 'title', 'description',)
     empty_value_display = '-empty-'
-    prepopulated_fields = {'slug': ('title',)}
 
 
 class CommentAdmin(admin.ModelAdmin):
@@ -18,7 +17,7 @@ class CommentAdmin(admin.ModelAdmin):
 
 
 class FollowAdmin(admin.ModelAdmin):
-    list_display = ('pk', 'author', 'user')
+    list_display = ('pk', 'following', 'user')
 
 
 admin.site.register(Post, PostAdmin)
